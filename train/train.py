@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error
 import logging
 
 # 配置参数
-MODEL_NAME = "Qwen/Qwen-4B"  # 使用Hugging Face上的模型
+MODEL_NAME = "../../models/Qwen3-4B"  # 使用Hugging Face上的模型
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 MAX_LENGTH = 2048
 OUTPUT_PATH = '../output/result_qwen.json'
