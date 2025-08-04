@@ -3,6 +3,7 @@ import json
 import torch
 import wandb
 from tqdm import tqdm
+from accelerate import Accelerator
 from transformers import (
     AutoModelForCausalLM, 
     AutoTokenizer,
