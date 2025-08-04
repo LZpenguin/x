@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python -m accelerate launch \
+accelerate launch \
     --config_file config.yaml \
     train.py \
     --model_name "../../models/Qwen3-4B" \
