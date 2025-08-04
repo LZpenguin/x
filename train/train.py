@@ -2,15 +2,15 @@ import os
 import json
 import torch
 from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
+from transformers import AutoModelForCausalLM, AutoTokenizer
 import numpy as np
 from typing import List, Dict, Any
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 from sklearn.metrics import mean_squared_error
 import logging
 
 # 配置参数
-MODEL_NAME = "../../models/Qwen3-4B"  # 或者使用其他版本的Qwen模型
+MODEL_NAME = "Qwen/Qwen-4B"  # 使用Hugging Face上的模型
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 MAX_LENGTH = 2048
 OUTPUT_PATH = '../output/result_qwen.json'
@@ -18,13 +18,6 @@ TRAIN_DATA_PATH = '../data/train.json'
 EVAL_DATA_PATH = '../data/val.json'
 MAX_DEVIATION = 42
 MAIN_WEIGHT = 0.5
-
-# 训练参数
-LEARNING_RATE = 2e-5
-BATCH_SIZE = 4
-NUM_EPOCHS = 3
-GRADIENT_ACCUMULATION_STEPS = 4
-WARMUP_STEPS = 100
 
 # 设置日志
 logging.basicConfig(
@@ -36,75 +29,34 @@ logging.basicConfig(
     ]
 )
 
-class LegalDataset(Dataset):
-    def __init__(self, data_path: str, tokenizer):
-        self.tokenizer = tokenizer
-        with open(data_path, 'r', encoding='utf-8') as f:
-            self.data = json.load(f)
-            
-    def __len__(self):
-        return len(self.data)
-    
-    def __getitem__(self, idx):
-        case = self.data[idx]
-        prompt = self.create_prompt(case)
-        target = self.create_target(case)
-        
-        # 编码输入和目标
-        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True, 
-                              max_length=MAX_LENGTH, padding="max_length")
-        targets = self.tokenizer(target, return_tensors="pt", truncation=True,
-                               max_length=MAX_LENGTH, padding="max_length")
-        
-        # 准备模型输入
-        input_ids = inputs["input_ids"].squeeze()
-        attention_mask = inputs["attention_mask"].squeeze()
-        labels = targets["input_ids"].squeeze()
-        
-        return {
-            "input_ids": input_ids,
-            "attention_mask": attention_mask,
-            "labels": labels
-        }
-    
-    def create_prompt(self, case: Dict[str, Any]) -> str:
-        return f"""你是一个法律助手。请根据以下案件信息预测判决结果和量刑标签。
-
-案件详情:
-{case['case_detail']}
-
-涉案人员:
-{case['person']}
-
-请以JSON格式返回判决结果，并严格遵守以下刑罚规则：
-
-1. 对于每个涉案人员，以下主刑中只能选择一个：
-   - 管制（月数）
-   - 拘役（月数）
-   - 有期徒刑（月数）
-   - 无期徒刑
-   - 死刑
-
-2. 缓刑规则：
-   - 缓刑必须依附于拘役或有期徒刑
-   - 管制、无期徒刑、死刑不能适用缓刑"""
-
-    def create_target(self, case: Dict[str, Any]) -> str:
-        return json.dumps({
-            "case_judgment": case["case_judgment"],
-            "case_judgment_label": case["case_judgment_label"]
-        }, ensure_ascii=False)
-
 def load_model_and_tokenizer():
     """加载模型和分词器"""
     logging.info("正在加载模型和分词器...")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(
-        MODEL_NAME,
-        device_map="auto",
-        trust_remote_code=True
-    )
-    return model, tokenizer
+    
+    # 设置环境变量
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    
+    try:
+        # 加载tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(
+            MODEL_NAME,
+            trust_remote_code=True,
+            padding_side="left"
+        )
+        tokenizer.pad_token = tokenizer.eos_token
+        
+        # 加载模型
+        model = AutoModelForCausalLM.from_pretrained(
+            MODEL_NAME,
+            device_map="auto",
+            trust_remote_code=True,
+            torch_dtype=torch.float16  # 使用半精度
+        ).eval()
+        
+        return model, tokenizer
+    except Exception as e:
+        logging.error(f"加载模型时出错: {str(e)}")
+        raise
 
 def validate_sentence(sentence: Dict[str, Any]) -> tuple[bool, str]:
     """
@@ -166,20 +118,20 @@ def predict_case(model, tokenizer, case: Dict[str, Any]) -> Dict[str, Any]:
    - 管制、无期徒刑、死刑不能适用缓刑
 
 请返回如下格式的JSON：
-{
+{{
     "case_judgment": "本院认为，...",
-    "case_judgment_label": [
-        {
+    "case_judgment_label": [[
+        {{
             "person_name": "涉案人员姓名",
-            "predicted_sentence1": {"value": 0, "desc": "管制（月数）"},
-            "predicted_sentence2": {"value": 0, "desc": "拘役（月数）"},
-            "predicted_sentence3": {"value": 12, "desc": "有期徒刑（月数）"},
-            "predicted_sentence4": {"value": 24, "desc": "缓刑（月数）"},
-            "predicted_sentence5": {"value": false, "desc": "无期徒刑"},
-            "predicted_sentence6": {"value": false, "desc": "死刑"}
-        }
-    ]
-}"""
+            "predicted_sentence1": {{"value": 0, "desc": "管制（月数）"}},
+            "predicted_sentence2": {{"value": 0, "desc": "拘役（月数）"}},
+            "predicted_sentence3": {{"value": 12, "desc": "有期徒刑（月数）"}},
+            "predicted_sentence4": {{"value": 24, "desc": "缓刑（月数）"}},
+            "predicted_sentence5": {{"value": false, "desc": "无期徒刑"}},
+            "predicted_sentence6": {{"value": false, "desc": "死刑"}}
+        }}
+    ]]
+}}"""
 
     try:
         # 对输入进行编码
@@ -452,64 +404,30 @@ def evaluate_predictions(true_data: List[Dict[str, Any]], pred_data: List[Dict[s
     
     return score, mse_loss
 
-def train():
-    """训练模型"""
+def main():
+    """主函数"""
     # 加载模型和分词器
     model, tokenizer = load_model_and_tokenizer()
     
-    # 准备数据集
-    train_dataset = LegalDataset(TRAIN_DATA_PATH, tokenizer)
-    eval_dataset = LegalDataset(EVAL_DATA_PATH, tokenizer)
-    
-    # 设置训练参数
-    training_args = TrainingArguments(
-        output_dir="./results",
-        num_train_epochs=NUM_EPOCHS,
-        per_device_train_batch_size=BATCH_SIZE,
-        per_device_eval_batch_size=BATCH_SIZE,
-        gradient_accumulation_steps=GRADIENT_ACCUMULATION_STEPS,
-        warmup_steps=WARMUP_STEPS,
-        learning_rate=LEARNING_RATE,
-        weight_decay=0.01,
-        logging_dir="./logs",
-        logging_steps=10,
-        save_strategy="epoch",
-        evaluation_strategy="epoch",
-    )
-    
-    # 创建训练器
-    trainer = Trainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
-    )
-    
-    # 开始训练
-    logging.info("开始训练...")
-    trainer.train()
-    
-    # 保存模型
-    logging.info("保存模型...")
-    trainer.save_model("./final_model")
-    
-    return model, tokenizer
-
-def evaluate(model, tokenizer):
-    """评估模型"""
-    logging.info("开始评估...")
+    # 读取训练数据
+    logging.info("正在读取训练数据...")
+    with open(TRAIN_DATA_PATH, 'r', encoding='utf-8') as f:
+        train_cases = json.load(f)
     
     # 读取验证数据
+    logging.info("正在读取验证数据...")
     with open(EVAL_DATA_PATH, 'r', encoding='utf-8') as f:
         eval_cases = json.load(f)
     
     # 进行预测
     results = []
+    logging.info("正在进行预测...")
     for case in tqdm(eval_cases, desc="处理验证集"):
         processed_case = predict_case(model, tokenizer, case)
         results.append(processed_case)
     
     # 保存预测结果
+    logging.info("正在保存预测结果...")
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
     
@@ -518,18 +436,6 @@ def evaluate(model, tokenizer):
     logging.info(f"\n最终评估结果：")
     logging.info(f"分数：{score:.2f}")
     logging.info(f"Loss：{loss:.4f}")
-    
-    return score, loss
-
-def main():
-    """主函数"""
-    # 训练模型
-    model, tokenizer = train()
-    
-    # 评估模型
-    score, loss = evaluate(model, tokenizer)
-    
-    logging.info("完成！")
 
 if __name__ == "__main__":
     main()
