@@ -1,23 +1,146 @@
 import os
 import json
 import torch
+import wandb
 from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import (
+    AutoModelForCausalLM, 
+    AutoTokenizer,
+    Trainer,
+    TrainingArguments,
+    default_data_collator
+)
 import numpy as np
 from typing import List, Dict, Any
 from torch.utils.data import Dataset
-from sklearn.metrics import mean_squared_error
 import logging
+from dataclasses import dataclass
+from typing import Optional, Union
 
-# 配置参数
-MODEL_NAME = "../../models/Qwen3-4B"  # 使用Hugging Face上的模型
+class CourtDataset(Dataset):
+    def __init__(self, cases, tokenizer, max_length=2048):
+        self.cases = cases
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+    
+    def __len__(self):
+        return len(self.cases)
+    
+    def __getitem__(self, idx):
+        case = self.cases[idx]
+        prompt = self.create_prompt(case)
+        
+        # 编码输入
+        inputs = self.tokenizer(
+            prompt,
+            max_length=self.max_length,
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt"
+        )
+        
+        # 准备标签
+        labels = inputs["input_ids"].clone()
+        labels[labels == self.tokenizer.pad_token_id] = -100
+        
+        return {
+            "input_ids": inputs["input_ids"].squeeze(0),
+            "attention_mask": inputs["attention_mask"].squeeze(0),
+            "labels": labels.squeeze(0)
+        }
+    
+    def create_prompt(self, case):
+        prompt = f"""你是一个法律助手。请根据以下案件信息预测判决结果和量刑标签。
+
+案件详情:
+{case['case_detail']}
+
+涉案人员:
+{case['person']}
+
+请以JSON格式返回判决结果，并严格遵守以下刑罚规则：
+
+1. 对于每个涉案人员，以下主刑中只能选择一个：
+   - 管制（月数）
+   - 拘役（月数）
+   - 有期徒刑（月数）
+   - 无期徒刑
+   - 死刑
+
+2. 缓刑规则：
+   - 缓刑必须依附于拘役或有期徒刑
+   - 管制、无期徒刑、死刑不能适用缓刑"""
+        
+        if "case_judgment" in case and "case_judgment_label" in case:
+            # 如果有标签，添加到提示中作为示例
+            prompt += f"""
+
+判决结果：
+{case['case_judgment']}
+
+量刑标签：
+{json.dumps(case['case_judgment_label'], ensure_ascii=False, indent=2)}"""
+        
+        return prompt
+
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='训练配置')
+    
+    # 模型参数
+    parser.add_argument('--model_name', type=str, default='../../models/Qwen3-4B',
+                        help='模型路径')
+    parser.add_argument('--max_length', type=int, default=2048,
+                        help='最大序列长度')
+    
+    # 训练参数
+    parser.add_argument('--num_epochs', type=int, default=3,
+                        help='训练轮数')
+    parser.add_argument('--learning_rate', type=float, default=2e-5,
+                        help='学习率')
+    parser.add_argument('--warmup_ratio', type=float, default=0.1,
+                        help='预热比例')
+    parser.add_argument('--batch_size', type=int, default=4,
+                        help='批次大小')
+    parser.add_argument('--gradient_accumulation_steps', type=int, default=4,
+                        help='梯度累积步数')
+    parser.add_argument('--max_grad_norm', type=float, default=1.0,
+                        help='梯度裁剪阈值')
+    
+    # 数据参数
+    parser.add_argument('--train_data_path', type=str, default='../data/train.json',
+                        help='训练数据路径')
+    parser.add_argument('--eval_data_path', type=str, default='../data/val.json',
+                        help='验证数据路径')
+    parser.add_argument('--num_workers', type=int, default=4,
+                        help='数据加载的工作进程数')
+    
+    # 输出参数
+    parser.add_argument('--output_dir', type=str, default='../output',
+                        help='输出目录')
+    parser.add_argument('--save_steps', type=int, default=100,
+                        help='保存模型的步数间隔')
+    parser.add_argument('--eval_steps', type=int, default=100,
+                        help='评估的步数间隔')
+    parser.add_argument('--logging_steps', type=int, default=10,
+                        help='日志记录的步数间隔')
+    
+    # Wandb 参数
+    parser.add_argument('--use_wandb', action='store_true',
+                        help='是否使用 Weights & Biases 记录实验')
+    
+    args = parser.parse_args()
+    return args
+
+# 解析命令行参数
+train_args = vars(parse_args())
+
+# 常量
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MAX_LENGTH = 2048
-OUTPUT_PATH = '../output/result_qwen.json'
-TRAIN_DATA_PATH = '../data/train.json'
-EVAL_DATA_PATH = '../data/val.json'
 MAX_DEVIATION = 42
 MAIN_WEIGHT = 0.5
+OUTPUT_PATH = os.path.join(train_args["output_dir"], 'result_qwen.json')
 
 # 设置日志
 logging.basicConfig(
@@ -29,7 +152,7 @@ logging.basicConfig(
     ]
 )
 
-def load_model_and_tokenizer():
+def load_model_and_tokenizer(accelerator: Accelerator):
     """加载模型和分词器"""
     logging.info("正在加载模型和分词器...")
     
@@ -53,11 +176,13 @@ def load_model_and_tokenizer():
         model_config = {
             "pretrained_model_name_or_path": MODEL_NAME,
             "trust_remote_code": True,
-            "device_map": "auto",
             "torch_dtype": torch.float16
         }
         
-        model = AutoModelForCausalLM.from_pretrained(**model_config).eval()
+        with accelerator.main_process_first():
+            model = AutoModelForCausalLM.from_pretrained(**model_config)
+        
+        model = accelerator.prepare(model)
         
         return model, tokenizer
     except Exception as e:
@@ -101,7 +226,7 @@ def validate_sentence(sentence: Dict[str, Any]) -> tuple[bool, str]:
 
     return True, ""
 
-def predict_case(model, tokenizer, case: Dict[str, Any]) -> Dict[str, Any]:
+def predict_case(model, tokenizer, accelerator: Accelerator, case: Dict[str, Any]) -> Dict[str, Any]:
     """使用Qwen模型预测单个案件的判决结果"""
     prompt = f"""你是一个法律助手。请根据以下案件信息预测判决结果和量刑标签。
 
@@ -143,7 +268,7 @@ def predict_case(model, tokenizer, case: Dict[str, Any]) -> Dict[str, Any]:
     try:
         # 对输入进行编码
         inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=MAX_LENGTH)
-        inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
+        inputs = {k: v for k, v in inputs.items()}
 
         # 生成回答
         outputs = model.generate(
@@ -411,38 +536,158 @@ def evaluate_predictions(true_data: List[Dict[str, Any]], pred_data: List[Dict[s
     
     return score, mse_loss
 
+@dataclass
+class CustomTrainer(Trainer):
+    def __init__(self, eval_cases=None, tokenizer=None, **kwargs):
+        super().__init__(**kwargs)
+        self.eval_cases = eval_cases
+        self.tokenizer = tokenizer
+        
+    def compute_loss(self, model, inputs, return_outputs=False):
+        outputs = model(**inputs)
+        loss = outputs.loss
+        return (loss, outputs) if return_outputs else loss
+    
+    def evaluation_loop(
+        self,
+        dataloader,
+        description: str,
+        prediction_loss_only: Optional[bool] = None,
+        ignore_keys: Optional[List[str]] = None,
+        metric_key_prefix: str = "eval",
+    ):
+        # 首先运行标准的评估循环获取 loss
+        eval_output = super().evaluation_loop(
+            dataloader, description, prediction_loss_only, ignore_keys, metric_key_prefix
+        )
+        
+        # 如果没有评估案例，直接返回
+        if not self.eval_cases:
+            return eval_output
+            
+        # 进行案例预测和评分
+        self.model.eval()
+        results = []
+        for case in tqdm(self.eval_cases, desc="评估案例"):
+            processed_case = predict_case(self.model, self.tokenizer, case)
+            results.append(processed_case)
+        
+        # 计算评分
+        score, _ = evaluate_predictions(self.eval_cases, results)
+        
+        # 记录到 wandb
+        if self.is_world_process_zero():
+            wandb.log({
+                f"{metric_key_prefix}_loss": eval_output.metrics[f"{metric_key_prefix}_loss"],
+                f"{metric_key_prefix}_score": score,
+            })
+        
+        # 更新评估输出的指标
+        eval_output.metrics[f"{metric_key_prefix}_score"] = score
+        
+        return eval_output
+
 def main():
     """主函数"""
-    # 加载模型和分词器
-    model, tokenizer = load_model_and_tokenizer()
+    # 初始化 wandb
+    if train_args["use_wandb"]:
+        wandb.init(project="court-judgment-prediction")
     
-    # 读取训练数据
+    # 加载模型和分词器
+    model = AutoModelForCausalLM.from_pretrained(
+        train_args["model_name"],
+        trust_remote_code=True,
+        torch_dtype=torch.float16
+    )
+    tokenizer = AutoTokenizer.from_pretrained(
+        train_args["model_name"],
+        trust_remote_code=True,
+        use_fast=True,
+        padding_side="left"
+    )
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    
+    # 读取数据
     logging.info("正在读取训练数据...")
-    with open(TRAIN_DATA_PATH, 'r', encoding='utf-8') as f:
+    with open(train_args["train_data_path"], 'r', encoding='utf-8') as f:
         train_cases = json.load(f)
     
-    # 读取验证数据
     logging.info("正在读取验证数据...")
-    with open(EVAL_DATA_PATH, 'r', encoding='utf-8') as f:
+    with open(train_args["eval_data_path"], 'r', encoding='utf-8') as f:
         eval_cases = json.load(f)
     
-    # 进行预测
-    results = []
-    logging.info("正在进行预测...")
-    for case in tqdm(eval_cases, desc="处理验证集"):
-        processed_case = predict_case(model, tokenizer, case)
+    # 准备数据集
+    train_dataset = CourtDataset(train_cases, tokenizer, max_length=train_args["max_length"])
+    eval_dataset = CourtDataset(eval_cases, tokenizer, max_length=train_args["max_length"])
+    
+    # 准备训练参数
+    training_args = TrainingArguments(
+        output_dir=train_args["output_dir"],
+        num_train_epochs=train_args["num_epochs"],
+        per_device_train_batch_size=train_args["batch_size"],
+        per_device_eval_batch_size=train_args["batch_size"],
+        gradient_accumulation_steps=train_args["gradient_accumulation_steps"],
+        learning_rate=train_args["learning_rate"],
+        warmup_ratio=train_args["warmup_ratio"],
+        max_grad_norm=train_args["max_grad_norm"],
+        logging_steps=train_args["logging_steps"],
+        evaluation_strategy="steps",
+        eval_steps=train_args["eval_steps"],
+        save_strategy="steps",
+        save_steps=train_args["save_steps"],
+        load_best_model_at_end=True,
+        metric_for_best_model="eval_score",
+        greater_is_better=True,
+        fp16=True,
+        report_to="wandb" if train_args["use_wandb"] else "none",
+    )
+    
+    # 初始化 trainer
+    trainer = CustomTrainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_dataset,
+        eval_dataset=eval_dataset,
+        data_collator=default_data_collator,
+        eval_cases=eval_cases,
+        tokenizer=tokenizer,
+    )
+    
+    for case in tqdm(eval_cases, desc="处理验证集", disable=not accelerator.is_main_process):
+        processed_case = predict_case(model, tokenizer, accelerator, case)
         results.append(processed_case)
     
-    # 保存预测结果
-    logging.info("正在保存预测结果...")
-    with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
+    # 收集所有进程的结果
+    all_results = accelerator.gather_for_metrics(results)
     
-    # 评估结果
-    score, loss = evaluate_predictions(eval_cases, results)
-    logging.info(f"\n最终评估结果：")
-    logging.info(f"分数：{score:.2f}")
-    logging.info(f"Loss：{loss:.4f}")
+    if accelerator.is_main_process:
+        # 合并结果
+        final_results = []
+        for process_results in zip(*all_results):
+            final_results.extend(process_results)
+        
+        # 保存预测结果
+        logging.info("正在保存预测结果...")
+        with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
+            json.dump(final_results, f, ensure_ascii=False, indent=2)
+        
+        # 评估结果
+        score, loss = evaluate_predictions(eval_cases, final_results)
+        logging.info(f"\n最终评估结果：")
+        logging.info(f"分数：{score:.2f}")
+        logging.info(f"Loss：{loss:.4f}")
+
+        # 记录到 wandb
+        wandb.log({
+            "score": score,
+            "mse_loss": loss,
+        })
+        
+        # 关闭 wandb
+        wandb.finish()
+    
+    accelerator.wait_for_everyone()
 
 if __name__ == "__main__":
     main()
