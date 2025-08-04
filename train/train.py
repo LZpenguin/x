@@ -38,24 +38,31 @@ def load_model_and_tokenizer():
     
     try:
         # 加载tokenizer
-        tokenizer = AutoTokenizer.from_pretrained(
-            MODEL_NAME,
-            trust_remote_code=True,
-            padding_side="left"
-        )
-        tokenizer.pad_token = tokenizer.eos_token
+        config = {
+            "model_name_or_path": MODEL_NAME,
+            "trust_remote_code": True,
+            "use_fast": True,
+            "padding_side": "left"
+        }
         
+        tokenizer = AutoTokenizer.from_pretrained(**config)
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token
+            
         # 加载模型
-        model = AutoModelForCausalLM.from_pretrained(
-            MODEL_NAME,
-            device_map="auto",
-            trust_remote_code=True,
-            torch_dtype=torch.float16  # 使用半精度
-        ).eval()
+        model_config = {
+            "pretrained_model_name_or_path": MODEL_NAME,
+            "trust_remote_code": True,
+            "device_map": "auto",
+            "torch_dtype": torch.float16
+        }
+        
+        model = AutoModelForCausalLM.from_pretrained(**model_config).eval()
         
         return model, tokenizer
     except Exception as e:
         logging.error(f"加载模型时出错: {str(e)}")
+        logging.error(f"请确保模型路径 {MODEL_NAME} 存在并包含完整的模型文件")
         raise
 
 def validate_sentence(sentence: Dict[str, Any]) -> tuple[bool, str]:
