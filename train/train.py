@@ -1,694 +1,458 @@
 import os
-import json
+# 移除单卡设置，让accelerate管理GPU
+os.environ['https_proxy'] = 'http://127.0.0.1:7890'
+os.environ['http_proxy'] = 'http://127.0.0.1:7890'
 import torch
-import wandb
+from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments, set_seed
+from datasets import Dataset, concatenate_datasets
+import pandas as pd
+from peft import get_peft_model, LoraConfig, TaskType
+import warnings
 from tqdm import tqdm
-from accelerate import Accelerator
-from transformers import (
-    AutoModelForCausalLM, 
-    AutoTokenizer,
-    Trainer,
-    TrainingArguments,
-    default_data_collator
-)
-import numpy as np
-from typing import List, Dict, Any
-from torch.utils.data import Dataset
 import logging
-from dataclasses import dataclass
-from typing import Optional, Union
+import wandb
+import numpy as np
+import random
+import hashlib
+from dataset import XingDataset
+from accelerate import Accelerator, DistributedDataParallelKwargs
 
-class CourtDataset(Dataset):
-    def __init__(self, cases, tokenizer, max_length=2048):
-        self.cases = cases
-        self.tokenizer = tokenizer
-        self.max_length = max_length
-    
-    def __len__(self):
-        return len(self.cases)
-    
-    def __getitem__(self, idx):
-        case = self.cases[idx]
-        prompt = self.create_prompt(case)
-        
-        # 编码输入
-        inputs = self.tokenizer(
-            prompt,
-            max_length=self.max_length,
-            padding="max_length",
-            truncation=True,
-            return_tensors="pt"
-        )
-        
-        # 准备标签
-        labels = inputs["input_ids"].clone()
-        labels[labels == self.tokenizer.pad_token_id] = -100
-        
-        return {
-            "input_ids": inputs["input_ids"].squeeze(0),
-            "attention_mask": inputs["attention_mask"].squeeze(0),
-            "labels": labels.squeeze(0)
-        }
-    
-    def create_prompt(self, case):
-        prompt = f"""你是一个法律助手。请根据以下案件信息预测判决结果和量刑标签。
-
-案件详情:
-{case['case_detail']}
-
-涉案人员:
-{case['person']}
-
-请以JSON格式返回判决结果，并严格遵守以下刑罚规则：
-
-1. 对于每个涉案人员，以下主刑中只能选择一个：
-   - 管制（月数）
-   - 拘役（月数）
-   - 有期徒刑（月数）
-   - 无期徒刑
-   - 死刑
-
-2. 缓刑规则：
-   - 缓刑必须依附于拘役或有期徒刑
-   - 管制、无期徒刑、死刑不能适用缓刑"""
-        
-        if "case_judgment" in case and "case_judgment_label" in case:
-            # 如果有标签，添加到提示中作为示例
-            prompt += f"""
-
-判决结果：
-{case['case_judgment']}
-
-量刑标签：
-{json.dumps(case['case_judgment_label'], ensure_ascii=False, indent=2)}"""
-        
-        return prompt
-
-import argparse
-
-def parse_args():
-    parser = argparse.ArgumentParser(description='训练配置')
-    
-    # 模型参数
-    parser.add_argument('--model_name', type=str, default='../../models/Qwen3-4B',
-                        help='模型路径')
-    parser.add_argument('--max_length', type=int, default=2048,
-                        help='最大序列长度')
-    
-    # 训练参数
-    parser.add_argument('--num_epochs', type=int, default=3,
-                        help='训练轮数')
-    parser.add_argument('--learning_rate', type=float, default=2e-5,
-                        help='学习率')
-    parser.add_argument('--warmup_ratio', type=float, default=0.1,
-                        help='预热比例')
-    parser.add_argument('--batch_size', type=int, default=4,
-                        help='批次大小')
-    parser.add_argument('--gradient_accumulation_steps', type=int, default=4,
-                        help='梯度累积步数')
-    parser.add_argument('--max_grad_norm', type=float, default=1.0,
-                        help='梯度裁剪阈值')
-    
-    # 数据参数
-    parser.add_argument('--train_data_path', type=str, default='../data/train.json',
-                        help='训练数据路径')
-    parser.add_argument('--eval_data_path', type=str, default='../data/val.json',
-                        help='验证数据路径')
-    parser.add_argument('--num_workers', type=int, default=4,
-                        help='数据加载的工作进程数')
-    
-    # 输出参数
-    parser.add_argument('--output_dir', type=str, default='../output',
-                        help='输出目录')
-    parser.add_argument('--save_steps', type=int, default=100,
-                        help='保存模型的步数间隔')
-    parser.add_argument('--eval_steps', type=int, default=100,
-                        help='评估的步数间隔')
-    parser.add_argument('--logging_steps', type=int, default=10,
-                        help='日志记录的步数间隔')
-    
-    # Wandb 参数
-    parser.add_argument('--use_wandb', action='store_true',
-                        help='是否使用 Weights & Biases 记录实验')
-    
-    args = parser.parse_args()
-    return args
-
-# 解析命令行参数
-train_args = vars(parse_args())
-
-# 常量
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MAX_DEVIATION = 42
-MAIN_WEIGHT = 0.5
-OUTPUT_PATH = os.path.join(train_args["output_dir"], 'result_qwen.json')
 
 # 设置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('training.log'),
-        logging.StreamHandler()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# 过滤警告
+warnings.filterwarnings('ignore')
+
+# 设置随机种子函数
+def set_global_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    set_seed(seed)
+
+# 配置参数
+class TrainingConfig:
+    # 获取当前工作目录的上级目录作为基础路径
+    base_dir = os.path.join(os.getcwd(), "..")
+    
+    model_path = os.path.join(base_dir, "../models/Qwen3-4B")
+    train_files = [
+        os.path.join(base_dir, "data/train.json")
     ]
-)
+    val_file = os.path.join(base_dir, "data/val.json")
 
-def load_model_and_tokenizer(accelerator: Accelerator):
-    """加载模型和分词器"""
-    logging.info("正在加载模型和分词器...")
     
-    # 设置环境变量
-    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    # LoRA配置
+    use_lora = False
+    lora_r = 32
+    lora_alpha = 64
+    lora_dropout = 0.1
     
-    try:
-        # 加载tokenizer
-        config = {
-            "model_name_or_path": MODEL_NAME,
-            "trust_remote_code": True,
-            "use_fast": True,
-            "padding_side": "left"
-        }
-        
-        tokenizer = AutoTokenizer.from_pretrained(**config)
-        if tokenizer.pad_token is None:
-            tokenizer.pad_token = tokenizer.eos_token
-            
-        # 加载模型
-        model_config = {
-            "pretrained_model_name_or_path": MODEL_NAME,
-            "trust_remote_code": True,
-            "torch_dtype": torch.float16
-        }
-        
-        with accelerator.main_process_first():
-            model = AutoModelForCausalLM.from_pretrained(**model_config)
-        
-        model = accelerator.prepare(model)
-        
-        return model, tokenizer
-    except Exception as e:
-        logging.error(f"加载模型时出错: {str(e)}")
-        logging.error(f"请确保模型路径 {MODEL_NAME} 存在并包含完整的模型文件")
-        raise
+    # 根据训练模式设置输出目录
+    training_method = "ft"
+    training_mode = "lora" if use_lora else "full"
+    output_dir = os.path.join(base_dir, f"models/{training_method}/{model_path.split('/')[-1]}-{training_method}-{training_mode}-2048左截断")
+    
+    # accelerate配置文件路径
+    accelerate_config_file = "accelerate_config.yaml"
+    
+    
+    # 训练配置
+    batch_size = 1
+    learning_rate = 1e-4
+    num_epochs = 3
+    max_length = 2048
+    gradient_accumulation_steps = 1
+    save_total_limit = 100
+    eval_steps_ratio = 0.05
+    save_only_model = True  # 只保存模型权重，不保存优化器状态等中间参数
+    
+    # 评估配置
+    force_clear_cache = True
+    
+    # wandb配置
+    wandb_project = f"xing"
+    wandb_name = f"xing-{training_method}-{training_mode}"
+    
+    # 添加随机种子
+    seed = 42
 
-def validate_sentence(sentence: Dict[str, Any]) -> tuple[bool, str]:
+def get_processed_data_cache_path(config: 'TrainingConfig') -> tuple:
     """
-    验证刑罚组合的合法性
-    返回: (bool, str) - (是否合法, 错误信息)
+    获取已处理数据的缓存路径
+    Args:
+        config: 训练配置
+    Returns:
+        (train_cache_path, val_cache_path)
     """
-    # 提取各种刑罚的值
-    imprisonment = sentence.get("predicted_sentence3", {}).get("value", 0)  # 有期徒刑
-    life_imprisonment = sentence.get("predicted_sentence5", {}).get("value", False)  # 无期徒刑
-    detention = sentence.get("predicted_sentence2", {}).get("value", 0)  # 拘役
-    surveillance = sentence.get("predicted_sentence1", {}).get("value", 0)  # 管制
-    probation = sentence.get("predicted_sentence4", {}).get("value", 0)  # 缓刑
-    death_penalty = sentence.get("predicted_sentence6", {}).get("value", False)  # 死刑
-
-    # 1. 检查多种主刑共存
-    main_punishments = 0
-    if imprisonment > 0: main_punishments += 1
-    if life_imprisonment: main_punishments += 1
-    if detention > 0: main_punishments += 1
-    if surveillance > 0: main_punishments += 1
-    if death_penalty: main_punishments += 1
+    train_files_str = "_".join(sorted(config.train_files))  # 排序确保一致性
+    train_files_hash = hashlib.md5(train_files_str.encode()).hexdigest()
+    val_file_hash = hashlib.md5(config.val_file.encode()).hexdigest()
+    cache_id = f"{config.model_path}_{config.max_length}_{config.seed}_{train_files_hash}_{val_file_hash}_processed"
+    cache_name = hashlib.md5(cache_id.encode()).hexdigest()
     
-    if main_punishments > 1:
-        return False, "错误：不能同时存在多个主刑"
+    cache_dir = os.path.expanduser("~/.cache/huggingface/datasets/processed_cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    
+    train_cache = os.path.join(cache_dir, f"{cache_name}_train")
+    val_cache = os.path.join(cache_dir, f"{cache_name}_dev")
+    
+    return train_cache, val_cache
 
-    # 2. 检查缓刑的合法性
-    if probation > 0:
-        # 2.1 检查是否有主刑
-        if not (imprisonment > 0 or detention > 0):
-            return False, "错误：有缓刑但无可缓刑的主刑"
+def get_tokenization_cache_path(dataset_name: str, tokenizer_name: str, config: 'TrainingConfig') -> str:
+    """
+    获取tokenization缓存文件路径，参考dataset.py的缓存方式
+    Args:
+        dataset_name: 数据集名称 (train/dev)
+        tokenizer_name: tokenizer名称
+        config: 训练配置
+    Returns:
+        缓存文件路径
+    """
+    # 使用关键参数生成唯一的缓存标识，移除rank让所有进程共享缓存
+    cache_id = f"{dataset_name}_{tokenizer_name}_{config.max_length}_{config.seed}"
+    # 计算哈希值作为缓存文件名
+    cache_name = hashlib.md5(cache_id.encode()).hexdigest()
+    
+    # 确定缓存目录
+    cache_dir = os.path.expanduser("~/.cache/huggingface/datasets/tokenization_cache")
+    
+    # 确保缓存目录存在
+    os.makedirs(cache_dir, exist_ok=True)
+    
+    return os.path.join(cache_dir, f"{cache_name}.arrow")
+
+def prepare_data(config):
+    """
+    根据文件扩展名自动选择对应的数据加载器
+    """
+    train_datasets = []
+    
+    # 遍历所有训练文件
+    for train_file in config.train_files:
+        logger.info(f"加载训练数据: {train_file}")
         
-        # 2.2 检查是否与不适用缓刑的主刑共存
-        if surveillance > 0 or life_imprisonment or death_penalty:
-            return False, "错误：缓刑不能与管制、无期徒刑或死刑共存"
-
-    return True, ""
-
-def predict_case(model, tokenizer, accelerator: Accelerator, case: Dict[str, Any]) -> Dict[str, Any]:
-    """使用Qwen模型预测单个案件的判决结果"""
-    prompt = f"""你是一个法律助手。请根据以下案件信息预测判决结果和量刑标签。
-
-案件详情:
-{case['case_detail']}
-
-涉案人员:
-{case['person']}
-
-请以JSON格式返回判决结果，并严格遵守以下刑罚规则：
-
-1. 对于每个涉案人员，以下主刑中只能选择一个：
-   - 管制（月数）
-   - 拘役（月数）
-   - 有期徒刑（月数）
-   - 无期徒刑
-   - 死刑
-
-2. 缓刑规则：
-   - 缓刑必须依附于拘役或有期徒刑
-   - 管制、无期徒刑、死刑不能适用缓刑
-
-请返回如下格式的JSON：
-{{
-    "case_judgment": "本院认为，...",
-    "case_judgment_label": [[
-        {{
-            "person_name": "涉案人员姓名",
-            "predicted_sentence1": {{"value": 0, "desc": "管制（月数）"}},
-            "predicted_sentence2": {{"value": 0, "desc": "拘役（月数）"}},
-            "predicted_sentence3": {{"value": 12, "desc": "有期徒刑（月数）"}},
-            "predicted_sentence4": {{"value": 24, "desc": "缓刑（月数）"}},
-            "predicted_sentence5": {{"value": false, "desc": "无期徒刑"}},
-            "predicted_sentence6": {{"value": false, "desc": "死刑"}}
-        }}
-    ]]
-}}"""
-
-    try:
-        # 对输入进行编码
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=MAX_LENGTH)
-        inputs = {k: v for k, v in inputs.items()}
-
-        # 生成回答
-        outputs = model.generate(
-            **inputs,
-            max_new_tokens=1024,
-            temperature=0.7,
-            top_p=0.9,
-            repetition_penalty=1.1
-        )
+        # 根据文件扩展名选择对应的数据加载器
+        if train_file.endswith('.json'):
+            dataset = XingDataset(train_file)
+        else:
+            raise ValueError(f"不支持的文件格式: {train_file}")
         
-        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        
-        # 提取JSON部分
-        try:
-            start_idx = response.find("{")
-            end_idx = response.rfind("}") + 1
-            if start_idx != -1 and end_idx != -1:
-                json_str = response[start_idx:end_idx]
-                prediction = json.loads(json_str)
-            else:
-                raise ValueError("未找到有效的JSON格式回答")
+        dataset = dataset.data
+        train_datasets.append(dataset)
+        logger.info(f"数据集大小: {len(dataset)}")
+    
+    # 合并所有训练数据集
+    train_dataset = concatenate_datasets(train_datasets)
+    logger.info(f"合并后的训练数据集大小: {len(train_dataset)}")
+    
+    # 加载开发集数据
+    logger.info(f"加载开发集数据: {config.val_file}")
+    if config.val_file.endswith('.json'):
+        val_dataset = XingDataset(config.val_file)
+    else:
+        raise ValueError(f"不支持的文件格式: {config.val_file}")
+    
+    val_dataset = val_dataset.data
+    logger.info(f"评测数据大小: {len(val_dataset)}")
+    
+    return train_dataset, val_dataset
 
-            # 验证每个涉案人员的刑罚组合
-            valid_sentences = []
-            for sentence in prediction['case_judgment_label']:
-                is_valid, error_msg = validate_sentence(sentence)
-                if is_valid:
-                    valid_sentences.append(sentence)
-                else:
-                    # 移除无效的刑罚组合
-                    for key in ['predicted_sentence1', 'predicted_sentence2', 'predicted_sentence3',
-                              'predicted_sentence4', 'predicted_sentence5', 'predicted_sentence6']:
-                        if key in sentence:
-                            sentence[key]['value'] = 0 if isinstance(sentence[key]['value'], (int, float)) else False
-                    valid_sentences.append(sentence)
-
-            case['case_judgment'] = prediction['case_judgment']
-            case['case_judgment_label'] = valid_sentences
-            
-        except Exception as e:
-            logging.error(f"解析预测结果时出错: {str(e)}")
-            case['case_judgment'] = f"Error: {str(e)}"
-            case['case_judgment_label'] = []
-            
-    except Exception as e:
-        logging.error(f"生成预测时出错: {str(e)}")
-        case['case_judgment'] = f"Error: {str(e)}"
-        case['case_judgment_label'] = []
+def prepare_model_and_tokenizer(config):
+    # 加载tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(config.model_path, truncation_side='left', padding_side='left')
     
-    return case
-
-def evaluate_single_person(true_label: Dict[str, Any], pred_label: Dict[str, Any], 
-                         max_deviation: float = MAX_DEVIATION, 
-                         main_weight: float = MAIN_WEIGHT,
-                         case_id: str = None, 
-                         person_name: str = None, 
-                         stats: Dict[str, Any] = None,
-                         detail: str = "") -> float:
-    """评估单个被告人的预测结果"""
-    # 1. 检查互斥错误
-    main_sentences = [
-        pred_label["predicted_sentence1"]["value"],  # 管制
-        pred_label["predicted_sentence2"]["value"],  # 拘役
-        pred_label["predicted_sentence3"]["value"],  # 有期徒刑
-        pred_label["predicted_sentence5"]["value"],  # 无期徒刑
-        pred_label["predicted_sentence6"]["value"]   # 死刑
-    ]
+    # 统一使用bfloat16数据类型
+    torch_dtype = torch.bfloat16
     
-    active_sentences = sum([1 for x in main_sentences[:3] if x > 0]) + sum([1 for x in main_sentences[3:] if x])
-    if active_sentences > 1 and stats is not None:
-        stats["multiple_main_sentences"].append((case_id, person_name, active_sentences))
-        return max_deviation
-    
-    # 2. 检查缓刑合法性
-    has_probation = pred_label["predicted_sentence4"]["value"] > 0
-    has_valid_sentence = (pred_label["predicted_sentence2"]["value"] > 0 or 
-                         pred_label["predicted_sentence3"]["value"] > 0)
-    
-    if has_probation and not has_valid_sentence and stats is not None:
-        stats["invalid_probation"].append((case_id, person_name, "缓刑存在但无有效主刑"))
-        return max_deviation
-    
-    invalid_probation = (pred_label["predicted_sentence1"]["value"] > 0 or  # 管制
-                        pred_label["predicted_sentence5"]["value"] or        # 无期徒刑
-                        pred_label["predicted_sentence6"]["value"])          # 死刑
-    if has_probation and invalid_probation and stats is not None:
-        reason = "缓刑与不适用缓刑的主刑共存"
-        stats["invalid_probation"].append((case_id, person_name, reason))
-        return max_deviation
-    
-    # 3. 确定主刑类型
-    true_type = None
-    pred_type = None
-    
-    # 确定真实主刑类型
-    if true_label["predicted_sentence1"]["value"] > 0:
-        true_type = "管制"
-    elif true_label["predicted_sentence2"]["value"] > 0:
-        true_type = "拘役"
-    elif true_label["predicted_sentence3"]["value"] > 0:
-        true_type = "有期徒刑"
-    elif true_label["predicted_sentence5"]["value"]:
-        true_type = "无期徒刑"
-    elif true_label["predicted_sentence6"]["value"]:
-        true_type = "死刑"
-    
-    # 确定预测主刑类型
-    if pred_label["predicted_sentence1"]["value"] > 0:
-        pred_type = "管制"
-    elif pred_label["predicted_sentence2"]["value"] > 0:
-        pred_type = "拘役"
-    elif pred_label["predicted_sentence3"]["value"] > 0:
-        pred_type = "有期徒刑"
-    elif pred_label["predicted_sentence5"]["value"]:
-        pred_type = "无期徒刑"
-    elif pred_label["predicted_sentence6"]["value"]:
-        pred_type = "死刑"
-    
-    # 4. 统计和比较主刑类型
-    if stats is not None:
-        if true_type:
-            stats["true_sentence_types"][true_type] += 1
-        if pred_type:
-            stats["pred_sentence_types"][pred_type] += 1
-            
-    if true_type != pred_type:
-        if stats is not None:
-            stats["sentence_type_errors"].append((case_id, person_name, true_type, pred_type))
-        return max_deviation
-    
-    # 5. 计算主刑数值偏差
-    main_deviation = 0
-    if true_type in ["管制", "拘役", "有期徒刑"]:
-        true_value = 0
-        pred_value = 0
-        
-        if true_type == "管制":
-            true_value = true_label["predicted_sentence1"]["value"]
-            pred_value = pred_label["predicted_sentence1"]["value"]
-        elif true_type == "拘役":
-            true_value = true_label["predicted_sentence2"]["value"]
-            pred_value = pred_label["predicted_sentence2"]["value"]
-        elif true_type == "有期徒刑":
-            true_value = true_label["predicted_sentence3"]["value"]
-            pred_value = pred_label["predicted_sentence3"]["value"]
-        
-        main_deviation = abs(true_value - min(pred_value, 120))
-        if main_deviation > 0 and stats is not None:
-            stats["sentence_value_errors"].append((case_id, person_name, true_value, pred_value, main_deviation))
-        main_deviation = min(main_deviation, max_deviation)
-    
-    # 6. 检查缓刑
-    probation_deviation = 0
-    true_has_probation = true_label["predicted_sentence4"]["value"] > 0
-    pred_has_probation = pred_label["predicted_sentence4"]["value"] > 0 if '三级' not in detail else 0
-    
-    if true_has_probation != pred_has_probation:
-        if stats is not None:
-            stats["probation_errors"].append((case_id, person_name, 
-                true_label["predicted_sentence4"]["value"],
-                pred_label["predicted_sentence4"]["value"]))
-        probation_deviation = max_deviation
-    elif true_has_probation and pred_has_probation:
-        probation_deviation = abs(true_label["predicted_sentence4"]["value"] - pred_label["predicted_sentence4"]["value"])
-        if probation_deviation > 0 and stats is not None:
-            stats["probation_errors"].append((case_id, person_name,
-                true_label["predicted_sentence4"]["value"],
-                pred_label["predicted_sentence4"]["value"]))
-        probation_deviation = min(probation_deviation, max_deviation)
-    
-    # 7. 计算总偏差
-    total_deviation = main_deviation * main_weight + probation_deviation * (1 - main_weight)
-    return total_deviation
-
-def evaluate_predictions(true_data: List[Dict[str, Any]], pred_data: List[Dict[str, Any]],
-                       max_deviation: float = MAX_DEVIATION,
-                       main_weight: float = MAIN_WEIGHT) -> tuple[float, float]:
-    """评估整体预测结果，返回(score, loss)"""
-    # 初始化统计信息
-    stats = {
-        "true_sentence_types": {"管制": 0, "拘役": 0, "有期徒刑": 0, "无期徒刑": 0, "死刑": 0},
-        "pred_sentence_types": {"管制": 0, "拘役": 0, "有期徒刑": 0, "无期徒刑": 0, "死刑": 0},
-        "sentence_type_errors": [],
-        "sentence_value_errors": [],
-        "probation_errors": [],
-        "multiple_main_sentences": [],
-        "invalid_probation": []
-    }
-    
-    # 创建案例ID到案例的映射
-    true_cases = {case["case_id"]: case for case in true_data}
-    pred_cases = {case["case_id"]: case for case in pred_data}
-    
-    total_deviation = 0
-    total_persons = 0
-    missing_cases = []
-    missing_persons = []
-    
-    # 用于计算MSE loss的真实值和预测值列表
-    true_values = []
-    pred_values = []
-    
-    # 遍历所有真实案例
-    for case_id, true_case in true_cases.items():
-        if case_id not in pred_cases:
-            missing_cases.append(case_id)
-            total_deviation += len(true_case["case_judgment_label"]) * max_deviation
-            total_persons += len(true_case["case_judgment_label"])
-            continue
-            
-        pred_case = pred_cases[case_id]
-        
-        true_labels = {label["person_name"]: label for label in true_case["case_judgment_label"]}
-        pred_labels = {label["person_name"]: label for label in pred_case["case_judgment_label"]}
-        detail = pred_case['case_detail']
-        
-        for person_name, true_label in true_labels.items():
-            if person_name not in pred_labels:
-                missing_persons.append((case_id, person_name))
-                total_deviation += max_deviation
-                total_persons += 1
-                continue
-                
-            pred_label = pred_labels[person_name]
-            deviation = evaluate_single_person(true_label, pred_label, max_deviation, main_weight,
-                                          case_id, person_name, stats, detail)
-            total_deviation += deviation
-            total_persons += 1
-            
-            # 收集用于计算MSE的值
-            for i in range(1, 7):
-                key = f"predicted_sentence{i}"
-                true_val = float(true_label[key]["value"]) if isinstance(true_label[key]["value"], (int, float)) else float(true_label[key]["value"] is True)
-                pred_val = float(pred_label[key]["value"]) if isinstance(pred_label[key]["value"], (int, float)) else float(pred_label[key]["value"] is True)
-                true_values.append(true_val)
-                pred_values.append(pred_val)
-            
-        # 检查多余的被告人
-        for person_name in pred_labels:
-            if person_name not in true_labels:
-                total_deviation += max_deviation
-                total_persons += 1
-    
-    # 检查多余的案例
-    for case_id in pred_cases:
-        if case_id not in true_cases:
-            pred_case = pred_cases[case_id]
-            total_deviation += len(pred_case["case_judgment_label"]) * max_deviation
-            total_persons += len(pred_case["case_judgment_label"])
-    
-    # 计算平均偏差、分数和MSE loss
-    average_deviation = total_deviation / total_persons if total_persons > 0 else max_deviation
-    score = 100 - average_deviation
-    mse_loss = mean_squared_error(true_values, pred_values) if true_values else float('inf')
-    
-    # 打印评估结果
-    logging.info("\n=== 评估结果 ===")
-    logging.info(f"总案例数：{len(true_cases)}")
-    logging.info(f"总被告人数：{total_persons}")
-    logging.info(f"缺失案例数：{len(missing_cases)}")
-    logging.info(f"缺失被告人数：{len(missing_persons)}")
-    logging.info(f"平均偏差：{average_deviation:.4f}")
-    logging.info(f"分数：{score:.2f}")
-    logging.info(f"MSE Loss：{mse_loss:.4f}")
-    
-    return score, mse_loss
-
-@dataclass
-class CustomTrainer(Trainer):
-    def __init__(self, eval_cases=None, tokenizer=None, **kwargs):
-        super().__init__(**kwargs)
-        self.eval_cases = eval_cases
-        self.tokenizer = tokenizer
-        
-    def compute_loss(self, model, inputs, return_outputs=False):
-        outputs = model(**inputs)
-        loss = outputs.loss
-        return (loss, outputs) if return_outputs else loss
-    
-    def evaluation_loop(
-        self,
-        dataloader,
-        description: str,
-        prediction_loss_only: Optional[bool] = None,
-        ignore_keys: Optional[List[str]] = None,
-        metric_key_prefix: str = "eval",
-    ):
-        # 首先运行标准的评估循环获取 loss
-        eval_output = super().evaluation_loop(
-            dataloader, description, prediction_loss_only, ignore_keys, metric_key_prefix
-        )
-        
-        # 如果没有评估案例，直接返回
-        if not self.eval_cases:
-            return eval_output
-            
-        # 进行案例预测和评分
-        self.model.eval()
-        results = []
-        for case in tqdm(self.eval_cases, desc="评估案例"):
-            processed_case = predict_case(self.model, self.tokenizer, case)
-            results.append(processed_case)
-        
-        # 计算评分
-        score, _ = evaluate_predictions(self.eval_cases, results)
-        
-        # 记录到 wandb
-        if self.is_world_process_zero():
-            wandb.log({
-                f"{metric_key_prefix}_loss": eval_output.metrics[f"{metric_key_prefix}_loss"],
-                f"{metric_key_prefix}_score": score,
-            })
-        
-        # 更新评估输出的指标
-        eval_output.metrics[f"{metric_key_prefix}_score"] = score
-        
-        return eval_output
-
-def main():
-    """主函数"""
-    # 初始化 wandb
-    if train_args["use_wandb"]:
-        wandb.init(project="court-judgment-prediction")
-    
-    # 加载模型和分词器
+    # 加载模型，移除device_map让accelerate管理设备分配
     model = AutoModelForCausalLM.from_pretrained(
-        train_args["model_name"],
-        trust_remote_code=True,
-        torch_dtype=torch.float16
+        config.model_path,
+        torch_dtype=torch_dtype,
+        attn_implementation='eager'
     )
-    tokenizer = AutoTokenizer.from_pretrained(
-        train_args["model_name"],
-        trust_remote_code=True,
-        use_fast=True,
-        padding_side="left"
+    
+    # 根据开关决定是否应用LoRA
+    if config.use_lora:
+        # 配置LoRA
+        peft_config = LoraConfig(
+            task_type=TaskType.CAUSAL_LM,
+            inference_mode=False,
+            r=config.lora_r,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=config.lora_dropout,
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj"]
+        )
+        
+        # 获取PEFT模型
+        model = get_peft_model(model, peft_config)
+        logger.info("使用LoRA训练模式")
+    else:
+        # 全量训练模式下启用梯度检查点以节省内存
+        model.gradient_checkpointing_enable()
+        logger.info("使用全量训练模式，已启用梯度检查点")
+    
+    logger.info(f"模型数据类型: {torch_dtype}")
+    
+    return model, tokenizer
+
+def tokenize_function(examples, tokenizer, config):
+    # 所有数据集现在都有统一的prompt字段
+    prompts = examples['prompt']
+    
+    # 编码输入
+    inputs = tokenizer(
+        prompts,
+        padding="max_length",
+        truncation=True,
+        max_length=config.max_length,
+        return_tensors='pt'
     )
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
     
-    # 读取数据
-    logging.info("正在读取训练数据...")
-    with open(train_args["train_data_path"], 'r', encoding='utf-8') as f:
-        train_cases = json.load(f)
+    labels = inputs['input_ids'].clone()
     
-    logging.info("正在读取验证数据...")
-    with open(train_args["eval_data_path"], 'r', encoding='utf-8') as f:
-        eval_cases = json.load(f)
+    # 获取冒号的token_id
+    colon_token_id = tokenizer.encode('<|im_start|>',add_special_tokens=False)[0]
     
-    # 准备数据集
-    train_dataset = CourtDataset(train_cases, tokenizer, max_length=train_args["max_length"])
-    eval_dataset = CourtDataset(eval_cases, tokenizer, max_length=train_args["max_length"])
+    # 将input_ids转换为numpy数组进行处理
+    input_ids_np = inputs['input_ids'].numpy()
     
-    # 准备训练参数
+    # 找到所有冒号的位置
+    colon_mask = (input_ids_np == colon_token_id)
+    
+    # 对每个序列处理
+    for i in range(len(input_ids_np)):
+        # 找到当前序列中最后一个冒号的位置
+        colon_positions = np.where(colon_mask[i])[0]
+        if len(colon_positions) > 0:
+            last_colon_pos = colon_positions[-1]
+            # 将最后一个冒号之前的所有token标记为-100
+            labels[i, :last_colon_pos+1] = -100
+    
+    inputs['labels'] = labels
+    labels[labels == tokenizer.pad_token_id] = -100
+    
+    return inputs
+
+def train(config):
+    # 初始化accelerator
+    # 统一使用bf16混合精度
+    mixed_precision = "bf16"
+    
+    ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=False)
+    accelerator = Accelerator(
+        mixed_precision=mixed_precision,
+        gradient_accumulation_steps=config.gradient_accumulation_steps,
+        kwargs_handlers=[ddp_kwargs]
+    )
+    
+    # 设置全局随机种子
+    set_global_seed(config.seed)
+    if accelerator.is_main_process:
+        logger.info(f"设置全局随机种子为: {config.seed}")
+        logger.info(f"使用GPU: {accelerator.device}")
+        logger.info(f"进程数: {accelerator.num_processes}")
+        logger.info(f"训练模式: {'LoRA训练' if config.use_lora else '全量训练'}")
+        logger.info(f"混合精度: {mixed_precision}")
+        
+        os.makedirs(config.output_dir, exist_ok=True)
+
+        wandb.init(
+            project=config.wandb_project,
+            name=config.wandb_name,
+            config={
+                "learning_rate": config.learning_rate,
+                "batch_size": config.batch_size,
+                "epochs": config.num_epochs,
+                "model": config.model_path,
+                "num_gpus": accelerator.num_processes,
+                "use_lora": config.use_lora,
+                "training_mode": "LoRA" if config.use_lora else "Full Fine-tuning",
+                "mixed_precision": mixed_precision
+            }
+        )
+    
+    # 准备数据和模型 - 只在主进程处理，避免重复
+    train_cache_path, val_cache_path = get_processed_data_cache_path(config)
+    
+    # 如果设置了强制清除缓存，删除现有缓存
+    if config.force_clear_cache and accelerator.is_main_process:
+        import shutil
+        if os.path.exists(train_cache_path):
+            shutil.rmtree(train_cache_path)
+            logger.info(f"已清除训练数据缓存: {train_cache_path}")
+        if os.path.exists(val_cache_path):
+            shutil.rmtree(val_cache_path)
+            logger.info(f"已清除开发数据缓存: {val_cache_path}")
+    
+    # 等待主进程完成缓存清除
+    accelerator.wait_for_everyone()
+    
+    # 检查是否已有处理好的数据缓存
+    if os.path.exists(train_cache_path) and os.path.exists(val_cache_path):
+        if accelerator.is_main_process:
+            logger.info("发现已处理的数据缓存，直接加载...")
+        
+        # 所有进程直接加载已处理的数据
+        from datasets import load_from_disk
+        train_dataset = load_from_disk(train_cache_path)
+        val_dataset = load_from_disk(val_cache_path)
+        
+        if accelerator.is_main_process:
+            logger.info(f"从缓存加载训练数据: {len(train_dataset)} 样本")
+            logger.info(f"从缓存加载开发数据: {len(val_dataset)} 样本")
+        
+        # 所有进程加载模型和tokenizer
+        model, tokenizer = prepare_model_and_tokenizer(config)
+        
+    else:
+        # 只在主进程处理数据
+        if accelerator.is_main_process:
+            logger.info("未发现缓存，主进程开始处理数据...")
+            
+            # 主进程处理原始数据
+            train_dataset, val_dataset = prepare_data(config)
+            model, tokenizer = prepare_model_and_tokenizer(config)
+            
+            logger.info(f"训练集大小: {len(train_dataset)}, 验证集大小: {len(val_dataset)}")
+            logger.info("模型和tokenizer加载完成")
+            
+            # 主进程进行tokenization
+            logger.info("主进程开始tokenization...")
+            train_dataset = train_dataset.map(
+                lambda x: tokenize_function(x, tokenizer, config),
+                batched=True,
+                remove_columns=train_dataset.column_names,
+                desc="Tokenizing train dataset"
+            )
+            
+            val_dataset = val_dataset.map(
+                lambda x: tokenize_function(x, tokenizer, config),
+                batched=True,
+                remove_columns=val_dataset.column_names,
+                desc="Tokenizing dev dataset"
+            )
+            
+            # 保存处理好的数据
+            logger.info("保存处理好的数据到缓存...")
+            train_dataset.save_to_disk(train_cache_path)
+            val_dataset.save_to_disk(val_cache_path)
+            logger.info("数据处理完成并已缓存")
+            
+        else:
+            # 其他进程等待主进程完成
+            logger.info(f"进程 {accelerator.process_index} 等待主进程处理数据...")
+            train_dataset = None
+            val_dataset = None
+            model, tokenizer = prepare_model_and_tokenizer(config)
+    
+    # 等待主进程完成数据处理
+    accelerator.wait_for_everyone()
+    
+    # 非主进程加载处理好的数据
+    if not accelerator.is_main_process:
+        logger.info(f"进程 {accelerator.process_index} 加载处理好的数据...")
+        from datasets import load_from_disk
+        train_dataset = load_from_disk(train_cache_path)
+        val_dataset = load_from_disk(val_cache_path)
+    
+    if accelerator.is_main_process:
+        logger.info("所有进程数据准备完成")
+    
+    # 计算总步数和评估步数
+    total_steps = (len(train_dataset) * config.num_epochs) // (config.batch_size * config.gradient_accumulation_steps * accelerator.num_processes)
+    eval_steps = max(1, int(total_steps * config.eval_steps_ratio))  # 根据比例计算评估步数，至少为1
+    if accelerator.is_main_process:
+        logger.info(f"总训练步数: {total_steps}, 每{eval_steps}步进行一次评估 (比例: {config.eval_steps_ratio})")
+        logger.info(f"每个GPU的batch size: {config.batch_size}")
+        logger.info(f"总batch size: {config.batch_size * accelerator.num_processes}")
+    
+    # 设置训练参数，针对accelerate进行配置
+    # 统一使用bf16精度设置
     training_args = TrainingArguments(
-        output_dir=train_args["output_dir"],
-        num_train_epochs=train_args["num_epochs"],
-        per_device_train_batch_size=train_args["batch_size"],
-        per_device_eval_batch_size=train_args["batch_size"],
-        gradient_accumulation_steps=train_args["gradient_accumulation_steps"],
-        learning_rate=train_args["learning_rate"],
-        warmup_ratio=train_args["warmup_ratio"],
-        max_grad_norm=train_args["max_grad_norm"],
-        logging_steps=train_args["logging_steps"],
-        evaluation_strategy="steps",
-        eval_steps=train_args["eval_steps"],
+        output_dir=config.output_dir,
+        num_train_epochs=config.num_epochs,
+        per_device_train_batch_size=config.batch_size,
+        per_device_eval_batch_size=config.batch_size,
+        gradient_accumulation_steps=config.gradient_accumulation_steps,
+        learning_rate=config.learning_rate,
+        fp16=False,
+        bf16=True,
+        logging_dir=f"{config.output_dir}/logs",
+        logging_steps=1,
         save_strategy="steps",
-        save_steps=train_args["save_steps"],
+        save_steps=eval_steps,
+        eval_strategy="steps",
+        eval_steps=eval_steps,
+        report_to="wandb" if accelerator.is_main_process else None,  # 只在主进程报告wandb
         load_best_model_at_end=True,
-        metric_for_best_model="eval_score",
-        greater_is_better=True,
-        fp16=True,
-        report_to="wandb" if train_args["use_wandb"] else "none",
+        metric_for_best_model="eval_loss",
+        save_total_limit=config.save_total_limit,
+        save_only_model=config.save_only_model,  # 只保存模型权重，不保存优化器状态等中间参数
+        lr_scheduler_type="cosine",
+        warmup_ratio=0.1,
+        save_safetensors=True,
+        overwrite_output_dir=True,
+        seed=config.seed,
+        # accelerate相关设置
+        dataloader_pin_memory=False,  # 在多GPU环境下可能需要设置为False
+        ddp_find_unused_parameters=False,
+        # 全量训练时的额外设置
+        gradient_checkpointing=not config.use_lora,  # 全量训练启用梯度检查点节省内存
+        max_grad_norm=1.0,  # 梯度裁剪
     )
     
-    # 初始化 trainer
-    trainer = CustomTrainer(
+    # 初始化Trainer
+    trainer = Trainer(
         model=model,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
-        data_collator=default_data_collator,
-        eval_cases=eval_cases,
-        tokenizer=tokenizer,
+        eval_dataset=val_dataset
     )
     
-    for case in tqdm(eval_cases, desc="处理验证集", disable=not accelerator.is_main_process):
-        processed_case = predict_case(model, tokenizer, accelerator, case)
-        results.append(processed_case)
+    # 检查是否存在完整的检查点
+    last_checkpoint = None
+    if os.path.exists(config.output_dir):
+        checkpoints = [f for f in os.listdir(config.output_dir) if f.startswith("checkpoint")]
+        if len(checkpoints) > 0:
+            # 按照检查点编号排序
+            checkpoints = sorted(checkpoints, key=lambda x: int(x.split("-")[-1]))
+            
+            # 验证检查点是否完整
+            for checkpoint in reversed(checkpoints):  # 从最新的开始检查
+                checkpoint_path = os.path.join(config.output_dir, checkpoint)
+                trainer_state_path = os.path.join(checkpoint_path, "trainer_state.json")
+                
+                # 检查关键文件是否存在
+                if os.path.exists(trainer_state_path):
+                    last_checkpoint = checkpoint_path
+                    if accelerator.is_main_process:
+                        logger.info(f"发现完整的检查点: {last_checkpoint}")
+                    break
+                else:
+                    if accelerator.is_main_process:
+                        logger.warning(f"检查点 {checkpoint_path} 不完整，跳过")
+                        
+            if last_checkpoint is None and accelerator.is_main_process:
+                logger.info("未找到完整的检查点，将从头开始训练")
     
-    # 收集所有进程的结果
-    all_results = accelerator.gather_for_metrics(results)
+    # 开始训练，如果存在检查点则从检查点继续训练
+    trainer.train(resume_from_checkpoint=last_checkpoint)
     
+    # 只在主进程保存模型
     if accelerator.is_main_process:
-        # 合并结果
-        final_results = []
-        for process_results in zip(*all_results):
-            final_results.extend(process_results)
-        
-        # 保存预测结果
-        logging.info("正在保存预测结果...")
-        with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
-            json.dump(final_results, f, ensure_ascii=False, indent=2)
-        
-        # 评估结果
-        score, loss = evaluate_predictions(eval_cases, final_results)
-        logging.info(f"\n最终评估结果：")
-        logging.info(f"分数：{score:.2f}")
-        logging.info(f"Loss：{loss:.4f}")
-
-        # 记录到 wandb
-        wandb.log({
-            "score": score,
-            "mse_loss": loss,
-        })
-        
-        # 关闭 wandb
+        trainer.save_model()
+        tokenizer.save_pretrained(config.output_dir)
+        logger.info(f"模型保存至: {config.output_dir}")
+        # 关闭wandb
         wandb.finish()
     
+    # 等待所有进程完成
     accelerator.wait_for_everyone()
 
 if __name__ == "__main__":
-    main()
+    config = TrainingConfig()
+    train(config) 

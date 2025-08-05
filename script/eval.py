@@ -280,5 +280,5 @@ def evaluate_predictions(true_file, pred_file, max_deviation=42, main_weight=0.5
 
 # 评估验证集结果
 true_file = "../data/val.json"
-pred_file = "../output/result_val_v3_n8_9100.json"
+pred_file = "../output/qwen3-ft.json"
 average_deviation = evaluate_predictions(true_file, pred_file)
