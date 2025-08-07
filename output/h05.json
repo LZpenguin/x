@@ -1,0 +1,6398 @@
+[
+  {
+    "case_id": 3950,
+    "case_judgment_predict": [
+      {
+        "person_name": "尚*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "钟*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1305,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 5.0
+        },
+        "predicted_sentence3": {
+          "value": 0.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4727,
+    "case_judgment_predict": [
+      {
+        "person_name": "庞*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "雍*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 6.0
+        },
+        "predicted_sentence3": {
+          "value": 0.0
+        },
+        "predicted_sentence4": {
+          "value": 8.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2818,
+    "case_judgment_predict": [
+      {
+        "person_name": "肖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 412,
+    "case_judgment_predict": [
+      {
+        "person_name": "魏*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 15.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3385,
+    "case_judgment_predict": [
+      {
+        "person_name": "胡*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 397,
+    "case_judgment_predict": [
+      {
+        "person_name": "马*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5549,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 11.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2599,
+    "case_judgment_predict": [
+      {
+        "person_name": "梁*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "梁*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5700,
+    "case_judgment_predict": [
+      {
+        "person_name": "井*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3230,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1031,
+    "case_judgment_predict": [
+      {
+        "person_name": "那*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 600,
+    "case_judgment_predict": [
+      {
+        "person_name": "杜*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6220,
+    "case_judgment_predict": [
+      {
+        "person_name": "谭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3980,
+    "case_judgment_predict": [
+      {
+        "person_name": "彭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 42.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3219,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 72.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1570,
+    "case_judgment_predict": [
+      {
+        "person_name": "徐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1874,
+    "case_judgment_predict": [
+      {
+        "person_name": "关*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 234,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6766,
+    "case_judgment_predict": [
+      {
+        "person_name": "江*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5326,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1681,
+    "case_judgment_predict": [
+      {
+        "person_name": "江*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1424,
+    "case_judgment_predict": [
+      {
+        "person_name": "谢*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 20.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7097,
+    "case_judgment_predict": [
+      {
+        "person_name": "彭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3287,
+    "case_judgment_predict": [
+      {
+        "person_name": "徐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 66.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5797,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3205,
+    "case_judgment_predict": [
+      {
+        "person_name": "田*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1456,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6094,
+    "case_judgment_predict": [
+      {
+        "person_name": "潘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3890,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 16.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 719,
+    "case_judgment_predict": [
+      {
+        "person_name": "翟*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 60.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3193,
+    "case_judgment_predict": [
+      {
+        "person_name": "戚*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1087,
+    "case_judgment_predict": [
+      {
+        "person_name": "马*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "谢*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "韦*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4898,
+    "case_judgment_predict": [
+      {
+        "person_name": "史*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1594,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3936,
+    "case_judgment_predict": [
+      {
+        "person_name": "赖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3511,
+    "case_judgment_predict": [
+      {
+        "person_name": "郭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6599,
+    "case_judgment_predict": [
+      {
+        "person_name": "杨*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 21.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1124,
+    "case_judgment_predict": [
+      {
+        "person_name": "许*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 4.0
+        },
+        "predicted_sentence3": {
+          "value": 0.0
+        },
+        "predicted_sentence4": {
+          "value": 6.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2450,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 54.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3830,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 60.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1410,
+    "case_judgment_predict": [
+      {
+        "person_name": "曾*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3440,
+    "case_judgment_predict": [
+      {
+        "person_name": "万*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2630,
+    "case_judgment_predict": [
+      {
+        "person_name": "余*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1433,
+    "case_judgment_predict": [
+      {
+        "person_name": "夏*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 11.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6519,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4848,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3865,
+    "case_judgment_predict": [
+      {
+        "person_name": "杨*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 20.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "蒋*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1167,
+    "case_judgment_predict": [
+      {
+        "person_name": "彭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3393,
+    "case_judgment_predict": [
+      {
+        "person_name": "胡*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 517,
+    "case_judgment_predict": [
+      {
+        "person_name": "金*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1511,
+    "case_judgment_predict": [
+      {
+        "person_name": "朱*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 46.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6945,
+    "case_judgment_predict": [
+      {
+        "person_name": "郑*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3800,
+    "case_judgment_predict": [
+      {
+        "person_name": "马*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4243,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1431,
+    "case_judgment_predict": [
+      {
+        "person_name": "郑*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6836,
+    "case_judgment_predict": [
+      {
+        "person_name": "尤*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 178,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1573,
+    "case_judgment_predict": [
+      {
+        "person_name": "杨*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4121,
+    "case_judgment_predict": [
+      {
+        "person_name": "罗*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "徐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2324,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7006,
+    "case_judgment_predict": [
+      {
+        "person_name": "任*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2217,
+    "case_judgment_predict": [
+      {
+        "person_name": "田*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6232,
+    "case_judgment_predict": [
+      {
+        "person_name": "赵*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3434,
+    "case_judgment_predict": [
+      {
+        "person_name": "徐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1345,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3272,
+    "case_judgment_predict": [
+      {
+        "person_name": "杨*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 60.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1917,
+    "case_judgment_predict": [
+      {
+        "person_name": "毛*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7008,
+    "case_judgment_predict": [
+      {
+        "person_name": "龙*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6561,
+    "case_judgment_predict": [
+      {
+        "person_name": "汤*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4539,
+    "case_judgment_predict": [
+      {
+        "person_name": "隆*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5878,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "陈*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "陈*丙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6314,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7017,
+    "case_judgment_predict": [
+      {
+        "person_name": "俞*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3710,
+    "case_judgment_predict": [
+      {
+        "person_name": "罗*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3337,
+    "case_judgment_predict": [
+      {
+        "person_name": "梁*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2925,
+    "case_judgment_predict": [
+      {
+        "person_name": "游*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 463,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2570,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3487,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 180.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 750,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5282,
+    "case_judgment_predict": [
+      {
+        "person_name": "庞*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 20.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 265,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6567,
+    "case_judgment_predict": [
+      {
+        "person_name": "冯*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5774,
+    "case_judgment_predict": [
+      {
+        "person_name": "岳*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5944,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1509,
+    "case_judgment_predict": [
+      {
+        "person_name": "曾*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "吴*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 388,
+    "case_judgment_predict": [
+      {
+        "person_name": "钱*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2915,
+    "case_judgment_predict": [
+      {
+        "person_name": "徐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4578,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2947,
+    "case_judgment_predict": [
+      {
+        "person_name": "林*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 36.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5259,
+    "case_judgment_predict": [
+      {
+        "person_name": "宋*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1547,
+    "case_judgment_predict": [
+      {
+        "person_name": "谢*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4561,
+    "case_judgment_predict": [
+      {
+        "person_name": "冯*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 20.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2971,
+    "case_judgment_predict": [
+      {
+        "person_name": "时*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 240,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4449,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3925,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5712,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 246,
+    "case_judgment_predict": [
+      {
+        "person_name": "孙*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "孙*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1436,
+    "case_judgment_predict": [
+      {
+        "person_name": "冯*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 13.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6691,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5872,
+    "case_judgment_predict": [
+      {
+        "person_name": "冯*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 941,
+    "case_judgment_predict": [
+      {
+        "person_name": "罗*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 218,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 54.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3695,
+    "case_judgment_predict": [
+      {
+        "person_name": "叶*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 102,
+    "case_judgment_predict": [
+      {
+        "person_name": "任*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 60.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 704,
+    "case_judgment_predict": [
+      {
+        "person_name": "高*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 15.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1996,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "金*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "焦*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1909,
+    "case_judgment_predict": [
+      {
+        "person_name": "马*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1644,
+    "case_judgment_predict": [
+      {
+        "person_name": "吴*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5978,
+    "case_judgment_predict": [
+      {
+        "person_name": "周*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4739,
+    "case_judgment_predict": [
+      {
+        "person_name": "吴*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7069,
+    "case_judgment_predict": [
+      {
+        "person_name": "雷*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4810,
+    "case_judgment_predict": [
+      {
+        "person_name": "江*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6750,
+    "case_judgment_predict": [
+      {
+        "person_name": "龚*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5319,
+    "case_judgment_predict": [
+      {
+        "person_name": "江*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7004,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1835,
+    "case_judgment_predict": [
+      {
+        "person_name": "吴*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2952,
+    "case_judgment_predict": [
+      {
+        "person_name": "包*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 38,
+    "case_judgment_predict": [
+      {
+        "person_name": "江*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 54.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "方*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 54.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 133,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5614,
+    "case_judgment_predict": [
+      {
+        "person_name": "雷*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5370,
+    "case_judgment_predict": [
+      {
+        "person_name": "姚*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 60.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4493,
+    "case_judgment_predict": [
+      {
+        "person_name": "全*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5571,
+    "case_judgment_predict": [
+      {
+        "person_name": "董*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "吕*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4194,
+    "case_judgment_predict": [
+      {
+        "person_name": "黎*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 22.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1183,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 836,
+    "case_judgment_predict": [
+      {
+        "person_name": "徐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 593,
+    "case_judgment_predict": [
+      {
+        "person_name": "田*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 36.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5111,
+    "case_judgment_predict": [
+      {
+        "person_name": "蒋*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 42.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 323,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6851,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3191,
+    "case_judgment_predict": [
+      {
+        "person_name": "于*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 16.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 974,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4765,
+    "case_judgment_predict": [
+      {
+        "person_name": "秦*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1224,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 866,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6502,
+    "case_judgment_predict": [
+      {
+        "person_name": "杨*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4807,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6732,
+    "case_judgment_predict": [
+      {
+        "person_name": "唐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 39.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2207,
+    "case_judgment_predict": [
+      {
+        "person_name": "吴*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2828,
+    "case_judgment_predict": [
+      {
+        "person_name": "罗*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2109,
+    "case_judgment_predict": [
+      {
+        "person_name": "蒋*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 440,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 11.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3358,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2149,
+    "case_judgment_predict": [
+      {
+        "person_name": "廖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6954,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4751,
+    "case_judgment_predict": [
+      {
+        "person_name": "肖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2241,
+    "case_judgment_predict": [
+      {
+        "person_name": "林*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 509,
+    "case_judgment_predict": [
+      {
+        "person_name": "唐*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3590,
+    "case_judgment_predict": [
+      {
+        "person_name": "廖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 51,
+    "case_judgment_predict": [
+      {
+        "person_name": "曾*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "曾*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6775,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*乙",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5433,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6825,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4187,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1308,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5324,
+    "case_judgment_predict": [
+      {
+        "person_name": "丘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3578,
+    "case_judgment_predict": [
+      {
+        "person_name": "隆*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4024,
+    "case_judgment_predict": [
+      {
+        "person_name": "顾*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5637,
+    "case_judgment_predict": [
+      {
+        "person_name": "孔*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2673,
+    "case_judgment_predict": [
+      {
+        "person_name": "曹*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5311,
+    "case_judgment_predict": [
+      {
+        "person_name": "孔*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 20.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "梁*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 20.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5584,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 36.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3069,
+    "case_judgment_predict": [
+      {
+        "person_name": "熊*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2062,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3063,
+    "case_judgment_predict": [
+      {
+        "person_name": "薄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1055,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2489,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 30.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1185,
+    "case_judgment_predict": [
+      {
+        "person_name": "廖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6578,
+    "case_judgment_predict": [
+      {
+        "person_name": "宋*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3024,
+    "case_judgment_predict": [
+      {
+        "person_name": "宋*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3993,
+    "case_judgment_predict": [
+      {
+        "person_name": "陶*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3735,
+    "case_judgment_predict": [
+      {
+        "person_name": "杨*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2949,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1879,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6000,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4142,
+    "case_judgment_predict": [
+      {
+        "person_name": "姚*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2955,
+    "case_judgment_predict": [
+      {
+        "person_name": "王*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6857,
+    "case_judgment_predict": [
+      {
+        "person_name": "韦*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1949,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5862,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2105,
+    "case_judgment_predict": [
+      {
+        "person_name": "冉*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1003,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5768,
+    "case_judgment_predict": [
+      {
+        "person_name": "赵*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 5.0
+        },
+        "predicted_sentence3": {
+          "value": 0.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3545,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 156.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 144.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 474,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 336,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2532,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1550,
+    "case_judgment_predict": [
+      {
+        "person_name": "胡*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2613,
+    "case_judgment_predict": [
+      {
+        "person_name": "盘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 442,
+    "case_judgment_predict": [
+      {
+        "person_name": "王博士",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1908,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 8.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4628,
+    "case_judgment_predict": [
+      {
+        "person_name": "文*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 15.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1403,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4345,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4459,
+    "case_judgment_predict": [
+      {
+        "person_name": "夏*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4498,
+    "case_judgment_predict": [
+      {
+        "person_name": "龚*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3469,
+    "case_judgment_predict": [
+      {
+        "person_name": "吴*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 5.0
+        },
+        "predicted_sentence3": {
+          "value": 0.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4726,
+    "case_judgment_predict": [
+      {
+        "person_name": "周*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1859,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 7075,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1270,
+    "case_judgment_predict": [
+      {
+        "person_name": "欧阳*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2645,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 14.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5290,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 9.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4966,
+    "case_judgment_predict": [
+      {
+        "person_name": "黄*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 10.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3964,
+    "case_judgment_predict": [
+      {
+        "person_name": "何*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1320,
+    "case_judgment_predict": [
+      {
+        "person_name": "黎*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 48.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6759,
+    "case_judgment_predict": [
+      {
+        "person_name": "莫*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2196,
+    "case_judgment_predict": [
+      {
+        "person_name": "张*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 4994,
+    "case_judgment_predict": [
+      {
+        "person_name": "黎*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 36.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "罗*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 36.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      },
+      {
+        "person_name": "钟*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 36.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2425,
+    "case_judgment_predict": [
+      {
+        "person_name": "邬*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 7.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2685,
+    "case_judgment_predict": [
+      {
+        "person_name": "廖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 36.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 80,
+    "case_judgment_predict": [
+      {
+        "person_name": "翁*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1029,
+    "case_judgment_predict": [
+      {
+        "person_name": "黎*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 760,
+    "case_judgment_predict": [
+      {
+        "person_name": "廖*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2670,
+    "case_judgment_predict": [
+      {
+        "person_name": "郭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 42.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 3367,
+    "case_judgment_predict": [
+      {
+        "person_name": "万*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 12.0
+        },
+        "predicted_sentence4": {
+          "value": 18.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 6048,
+    "case_judgment_predict": [
+      {
+        "person_name": "李*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 54.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 231,
+    "case_judgment_predict": [
+      {
+        "person_name": "谭*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 18.0
+        },
+        "predicted_sentence4": {
+          "value": 24.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 186,
+    "case_judgment_predict": [
+      {
+        "person_name": "刘*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 6.0
+        },
+        "predicted_sentence4": {
+          "value": 12.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 1291,
+    "case_judgment_predict": [
+      {
+        "person_name": "百*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 42.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 5224,
+    "case_judgment_predict": [
+      {
+        "person_name": "岑*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 24.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  },
+  {
+    "case_id": 2923,
+    "case_judgment_predict": [
+      {
+        "person_name": "陈*甲",
+        "predicted_sentence1": {
+          "value": 0.0
+        },
+        "predicted_sentence2": {
+          "value": 0.0
+        },
+        "predicted_sentence3": {
+          "value": 42.0
+        },
+        "predicted_sentence4": {
+          "value": 0.0
+        },
+        "predicted_sentence5": {
+          "value": false
+        },
+        "predicted_sentence6": {
+          "value": false
+        }
+      }
+    ]
+  }
+]

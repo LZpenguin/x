@@ -12,7 +12,7 @@ class XingDataset:
     
     def process_json_data(self, example: Dict) -> Dict:
         return {
-            'prompt': f"你是一个法律助手，请根据以下案件信息预量刑标签(只有拘役和有期徒刑可以有缓刑)\n案件详情:\n{example['case_detail']}\n涉案人员:\n{example['person']}\n<|im_start|>{example['case_judgment_label'] if 'case_judgment_label' in example else ''}<|im_end|>"
+            'prompt': f"你是一个法律助手，请根据以下案件信息预量刑标签(只有拘役和有期徒刑可以有缓刑)\n案件详情:\n{example['case_detail']}\n判决人员:\n{example['person']}\n定罪:\n<|im_start|>{example['case_judgment_label'] if 'case_judgment_label' in example else ''}<|im_end|>"
         }
 
     def load_json_data(self, data_path: str) -> Dataset:
@@ -26,12 +26,29 @@ class XingDataset:
         with open(data_path, 'r') as f:
             raw_data = json.load(f)
 
-        dataset = Dataset.from_dict({key: [d[key] for d in raw_data] for key in raw_data[0]})
+        data_sp = []
+        for idx,item in enumerate(raw_data):
+            for person, label in zip(item['person'], item['case_judgment_label']):
+                zui = '无'
+                for i in [1,2,3,5,6]:
+                    zuii = label[f'predicted_sentence{i}']
+                    if zuii['value']:
+                        zui = zuii['desc'].split('（')[0]
+                if label[f'predicted_sentence4']['value']:
+                    zui += ' 缓刑'
+                data_sp.append({
+                    'case_detail': item['case_detail'],
+                    'person': person,
+                    'case_judgment_label': zui,
+                    'idx': idx
+                })
+
+        dataset = Dataset.from_dict({key: [d[key] for d in data_sp] for key in data_sp[0]})
 
         processed = dataset.map(
             self.process_json_data,
-            desc="处理预训练数据",
-        ).select_columns(['prompt'])
+            desc=f"处理预训练数据",
+        ).select_columns(['prompt', 'idx', 'person'])
             
         result = Dataset.from_list(processed)
         
@@ -44,5 +61,5 @@ class XingDataset:
         return data
 
 if __name__ == '__main__':
-    ds = XingDataset('/root/holo/x/data/val.json')
-    print(ds.data[0]['prompt'])
+    ds = XingDataset('../data/val.json')
+    print(ds.data[0])

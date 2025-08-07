@@ -1,7 +1,7 @@
 import json
 import os
 
-with open('../output/result_v31_n8.json', 'r', encoding='utf-8') as f:
+with open('../output/qwen3-8b-ft-valb-1562.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 data_f = []
@@ -34,5 +34,5 @@ if os.path.exists(test_path):
     # 按test_case_ids顺序排列
     sorted_data_f = [data_f_dict[case_id] for case_id in test_case_ids if case_id in data_f_dict]
     # 输出新文件
-    with open('../output/h02.json', 'w', encoding='utf-8') as f:
+    with open('../output/h05.json', 'w', encoding='utf-8') as f:
         json.dump(sorted_data_f, f, ensure_ascii=False, indent=2)

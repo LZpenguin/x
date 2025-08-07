@@ -17,7 +17,6 @@ import hashlib
 from dataset import XingDataset
 from accelerate import Accelerator, DistributedDataParallelKwargs
 
-
 # 设置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -40,9 +39,9 @@ class TrainingConfig:
     
     model_path = os.path.join(base_dir, "../models/Qwen3-4B")
     train_files = [
-        os.path.join(base_dir, "data/train.json")
+        os.path.join(base_dir, "data/train_b.json")
     ]
-    val_file = os.path.join(base_dir, "data/val.json")
+    val_file = os.path.join(base_dir, "data/val_b.json")
 
     
     # LoRA配置
@@ -51,14 +50,8 @@ class TrainingConfig:
     lora_alpha = 64
     lora_dropout = 0.1
     
-    # 根据训练模式设置输出目录
-    training_method = "ft"
-    training_mode = "lora" if use_lora else "full"
-    output_dir = os.path.join(base_dir, f"models/{training_method}/{model_path.split('/')[-1]}-{training_method}-{training_mode}-2048左截断")
-    
     # accelerate配置文件路径
     accelerate_config_file = "accelerate_config.yaml"
-    
     
     # 训练配置
     batch_size = 1
@@ -72,13 +65,20 @@ class TrainingConfig:
     
     # 评估配置
     force_clear_cache = True
+
+    # 根据训练模式设置输出目录
+    training_method = "ft"
+    training_mode = "lora" if use_lora else "full"
+    output_dir = os.path.join(base_dir, f"models/zui-{model_path.split('/')[-1]}-{training_method}-{training_mode}-{max_length}左截断-valb")
     
     # wandb配置
-    wandb_project = f"xing"
-    wandb_name = f"xing-{training_method}-{training_mode}"
+    wandb_project = f"xing-zui"
+    wandb_name = output_dir.split("/")[-1]
     
     # 添加随机种子
     seed = 42
+
+
 
 def get_processed_data_cache_path(config: 'TrainingConfig') -> tuple:
     """
@@ -388,7 +388,6 @@ def train(config):
         eval_strategy="steps",
         eval_steps=eval_steps,
         report_to="wandb" if accelerator.is_main_process else None,  # 只在主进程报告wandb
-        load_best_model_at_end=True,
         metric_for_best_model="eval_loss",
         save_total_limit=config.save_total_limit,
         save_only_model=config.save_only_model,  # 只保存模型权重，不保存优化器状态等中间参数
