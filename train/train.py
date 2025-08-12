@@ -37,7 +37,7 @@ class TrainingConfig:
     # 获取当前工作目录的上级目录作为基础路径
     base_dir = os.path.join(os.getcwd(), "..")
     
-    model_path = os.path.join(base_dir, "../models/Qwen3-4B")
+    model_path = os.path.join(base_dir, "../models/Qwen3-8B")
     train_files = [
         os.path.join(base_dir, "data/train_b.json")
     ]
@@ -55,8 +55,8 @@ class TrainingConfig:
     
     # 训练配置
     batch_size = 1
-    learning_rate = 1e-4
-    num_epochs = 3
+    learning_rate = 1e-5
+    num_epochs = 5
     max_length = 2048
     gradient_accumulation_steps = 1
     save_total_limit = 100
@@ -69,7 +69,7 @@ class TrainingConfig:
     # 根据训练模式设置输出目录
     training_method = "ft"
     training_mode = "lora" if use_lora else "full"
-    output_dir = os.path.join(base_dir, f"models/zui-{model_path.split('/')[-1]}-{training_method}-{training_mode}-{max_length}左截断-valb")
+    output_dir = os.path.join(base_dir, f"models/zui-{model_path.split('/')[-1]}-{training_method}-{training_mode}-{max_length}左截断-valb-e5")
     
     # wandb配置
     wandb_project = f"xing-zui"

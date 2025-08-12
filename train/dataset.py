@@ -28,14 +28,17 @@ class XingDataset:
 
         data_sp = []
         for idx,item in enumerate(raw_data):
+            if 'case_judgment_label' not in item:
+                item['case_judgment_label'] = [{}]*len(item['person'])
             for person, label in zip(item['person'], item['case_judgment_label']):
-                zui = '无'
-                for i in [1,2,3,5,6]:
-                    zuii = label[f'predicted_sentence{i}']
-                    if zuii['value']:
-                        zui = zuii['desc'].split('（')[0]
-                if label[f'predicted_sentence4']['value']:
-                    zui += ' 缓刑'
+                zui = ''
+                if 'predicted_sentence4' in label:
+                    for i in [1,2,3,5,6]:
+                        zuii = label[f'predicted_sentence{i}']
+                        if zuii['value']:
+                            zui = zuii['desc'].split('（')[0]
+                    if label[f'predicted_sentence4']['value']:
+                        zui += ' 缓刑'
                 data_sp.append({
                     'case_detail': item['case_detail'],
                     'person': person,
